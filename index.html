@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Selamat Hari Ibu</title>
     <style>
         * {
@@ -59,25 +59,13 @@
         }
 
         @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-30px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes float {
@@ -268,49 +256,78 @@
     </div>
 
     <script>
+        // Simple alert for the button
         function showMessage() {
             alert('💐 Terima kasih Ibu untuk segalanya! Putramu mencintaimu selamanya! 💝');
         }
 
-        // Create floating petals effect
+        // Petal creation / animation
         function createPetal() {
             const petal = document.createElement('div');
             petal.style.position = 'fixed';
-            petal.style.fontSize = '20px';
+            petal.style.fontSize = (14 + Math.floor(Math.random() * 12)) + 'px';
             petal.style.left = Math.random() * 100 + '%';
             petal.style.top = '-50px';
-            petal.style.opacity = '0.7';
+            petal.style.opacity = (0.5 + Math.random() * 0.5).toString();
             petal.style.pointerEvents = 'none';
             petal.style.zIndex = '1000';
+            petal.style.willChange = 'transform, top';
             petal.textContent = ['🌸', '🌺', '🌷', '🌹', '💐'][Math.floor(Math.random() * 5)];
-            
+
             document.body.appendChild(petal);
-            
+
             let pos = -50;
             let drift = Math.random() * 200 - 100;
-            const interval = setInterval(() => {
-                pos += 2;
-                drift += (Math.random() - 0.5) * 3;
+            const fallInterval = setInterval(() => {
+                pos += 2 + Math.random() * 2; // variable speed
+                drift += (Math.random() - 0.5) * 4;
                 petal.style.top = pos + 'px';
                 petal.style.transform = `translateX(${drift}px) rotate(${pos}deg)`;
-                
-                if (pos > window.innerHeight) {
-                    clearInterval(interval);
-                    petal.remove();
+
+                if (pos > window.innerHeight + 50) {
+                    clearInterval(fallInterval);
+                    if (petal.parentElement) petal.parentElement.removeChild(petal);
                 }
             }, 30);
+
+            // safety remove after 6s in case something goes wrong
+            setTimeout(() => {
+                if (petal.parentElement) {
+                    clearInterval(fallInterval);
+                    petal.remove();
+                }
+            }, 6000);
         }
 
-        // Create petals periodically
-        setInterval(createPetal, 2000);
-    </script>
-</body>
-</html>      if (document.hidden) {
-                clearInterval(petalInterval);
+        // Manage the interval with start/stop functions to avoid duplicate intervals
+        let petalInterval = null;
+
+        function startPetalInterval() {
+            if (petalInterval) return; // already running
+            petalInterval = setInterval(createPetal, 2000);
+        }
+
+        function stopPetalInterval() {
+            if (!petalInterval) return;
+            clearInterval(petalInterval);
+            petalInterval = null;
+        }
+
+        // Pause/resume when page visibility changes
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                stopPetalInterval();
             } else {
-                // restart if needed
-                setInterval(createPetal, 900);
+                startPetalInterval();
             }
+        });
+
+        // Start on load
+        startPetalInterval();
+
+        // Optional: stop when unloading (cleanup)
+        window.addEventListener('beforeunload', () => {
+            stopPetalInterval();
         });
     </script>
 </body>
