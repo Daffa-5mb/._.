@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy 34th Birthday!</title>
+    <title>Selamat Hari Ibu</title>
     <style>
         * {
             margin: 0;
@@ -13,294 +13,299 @@
 
         body {
             font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #ff6b9d, #ffa726, #42a5f5, #ab47bc);
-            background-size: 400% 400%;
-            animation: gradientShift 6s ease infinite;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffe0f0 50%, #ffd4e8 100%);
             min-height: 100vh;
             overflow-x: hidden;
         }
 
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
         }
 
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 20px;
+        header {
+            text-align: center;
+            padding: 60px 20px;
             position: relative;
         }
 
-        .main-message {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 30px;
-            padding: 60px 40px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-            transform: scale(0);
-            animation: popIn 1s ease-out 0.5s forwards;
-            margin-bottom: 40px;
-            max-width: 600px;
-        }
-
-        @keyframes popIn {
-            0% { transform: scale(0) rotate(-180deg); opacity: 0; }
-            100% { transform: scale(1) rotate(0deg); opacity: 1; }
-        }
-
-        .happy-birthday {
-            font-size: 3.5rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, #ff6b9d, #ffa726, #42a5f5);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        h1 {
+            font-size: 4em;
+            color: #d63384;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
             margin-bottom: 20px;
-            animation: textShine 3s ease-in-out infinite;
+            animation: fadeInDown 1s ease;
         }
 
-        @keyframes textShine {
-            0%, 100% { filter: brightness(1); }
-            50% { filter: brightness(1.3); }
+        .subtitle {
+            font-size: 1.5em;
+            color: #8b4789;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.3s both;
         }
 
-        .mom-text {
-            font-size: 2rem;
-            color: #333;
-            margin-bottom: 15px;
-            animation: bounce 2s ease-in-out infinite;
+        .heart {
+            display: inline-block;
+            color: #ff1744;
+            font-size: 2em;
+            animation: heartbeat 1.5s infinite;
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .age {
-            font-size: 4rem;
-            font-weight: bold;
-            color: #ff6b9d;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
+        @keyframes heartbeat {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            25% { transform: scale(1.2); }
+            50% { transform: scale(1); }
         }
 
-        .message {
-            font-size: 1.3rem;
-            color: #555;
-            line-height: 1.6;
-            margin-top: 30px;
-            font-style: italic;
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .balloons {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-
-        .balloon {
-            position: absolute;
-            width: 40px;
-            height: 60px;
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .balloon:nth-child(1) { background: #ff6b9d; left: 10%; animation-delay: 0s; }
-        .balloon:nth-child(2) { background: #ffa726; left: 20%; animation-delay: -2s; }
-        .balloon:nth-child(3) { background: #42a5f5; left: 80%; animation-delay: -1s; }
-        .balloon:nth-child(4) { background: #ab47bc; left: 90%; animation-delay: -3s; }
-        .balloon:nth-child(5) { background: #4caf50; left: 60%; animation-delay: -4s; }
 
         @keyframes float {
-            0%, 100% { transform: translateY(100vh) rotate(0deg); }
-            50% { transform: translateY(-100px) rotate(180deg); }
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
 
-        .confetti {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 10;
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
         }
 
-        .confetti-piece {
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(214, 51, 132, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.8s ease both;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.2s; }
+        .card:nth-child(2) { animation-delay: 0.4s; }
+        .card:nth-child(3) { animation-delay: 0.6s; }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(214, 51, 132, 0.3);
+        }
+
+        .card-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .card h3 {
+            color: #d63384;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 1.1em;
+        }
+
+        .message-section {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin: 50px 0;
+            box-shadow: 0 10px 30px rgba(214, 51, 132, 0.2);
+            text-align: center;
+        }
+
+        .message-section h2 {
+            color: #d63384;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 1.4em;
+            color: #8b4789;
+            line-height: 1.8;
+            margin: 30px 0;
+            position: relative;
+            padding: 0 40px;
+        }
+
+        .quote::before {
+            content: '"';
+            font-size: 3em;
             position: absolute;
-            width: 10px;
-            height: 10px;
-            background: #ff6b9d;
-            animation: confettiFall 3s linear infinite;
-        }
-
-        .confetti-piece:nth-child(odd) { background: #ffa726; }
-        .confetti-piece:nth-child(3n) { background: #42a5f5; }
-        .confetti-piece:nth-child(4n) { background: #ab47bc; }
-        .confetti-piece:nth-child(5n) { background: #4caf50; }
-
-        @keyframes confettiFall {
-            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
-        }
-
-        .cake {
-            font-size: 4rem;
-            animation: cakeShake 1s ease-in-out infinite;
-            margin: 20px 0;
-        }
-
-        @keyframes cakeShake {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(-2deg); }
-            75% { transform: rotate(2deg); }
-        }
-
-        .sparkles {
-            position: fixed;
-            top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 5;
+            top: -10px;
+            color: #ffb3d9;
         }
 
-        .sparkle {
+        .quote::after {
+            content: '"';
+            font-size: 3em;
             position: absolute;
-            font-size: 20px;
-            color: gold;
-            animation: sparkle 2s ease-in-out infinite;
+            right: 0;
+            bottom: -40px;
+            color: #ffb3d9;
         }
 
-        @keyframes sparkle {
-            0%, 100% { opacity: 0; transform: scale(0); }
-            50% { opacity: 1; transform: scale(1); }
+        .flower {
+            position: fixed;
+            font-size: 2em;
+            opacity: 0.6;
+            animation: float 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .flower:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+        .flower:nth-child(2) { top: 20%; right: 10%; animation-delay: 1s; }
+        .flower:nth-child(3) { bottom: 15%; left: 8%; animation-delay: 2s; }
+        .flower:nth-child(4) { bottom: 25%; right: 5%; animation-delay: 1.5s; }
+
+        .btn {
+            background: linear-gradient(135deg, #d63384, #ff1744);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-family: 'Georgia', serif;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(214, 51, 132, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #8b4789;
+            font-size: 1.1em;
         }
 
         @media (max-width: 768px) {
-            .happy-birthday {
-                font-size: 2.5rem;
-            }
-            .mom-text {
-                font-size: 1.5rem;
-            }
-            .age {
-                font-size: 3rem;
-            }
-            .message {
-                font-size: 1.1rem;
-            }
-            .main-message {
-                padding: 40px 30px;
-            }
+            h1 { font-size: 2.5em; }
+            .subtitle { font-size: 1.2em; }
+            .message-section { padding: 30px 20px; }
+            .quote { font-size: 1.1em; padding: 0 20px; }
         }
     </style>
 </head>
 <body>
-    <div class="balloons">
-        <div class="balloon"></div>
-        <div class="balloon"></div>
-        <div class="balloon"></div>
-        <div class="balloon"></div>
-        <div class="balloon"></div>
-    </div>
-
-    <div class="confetti" id="confetti"></div>
-    <div class="sparkles" id="sparkles"></div>
+    <div class="flower">🌸</div>
+    <div class="flower">🌺</div>
+    <div class="flower">🌷</div>
+    <div class="flower">🌹</div>
 
     <div class="container">
-        <div class="main-message">
-            <div class="happy-birthday">Happy Birthday</div>
-            <div class="mom-text">Mom!</div>
-            <div class="cake">🎂</div>
-            <div class="age">34</div>
-            <div class="message">
-                Wishing you a day filled with happiness, love, and wonderful memories. 
-                You deserve all the joy in the world today and always! 
-                Here's to another amazing year ahead! 🎉💕
+        <header>
+            <h1>Selamat Hari Ibu <span class="heart">❤️</span></h1>
+            <p class="subtitle">Untuk Wanita Terhebat dalam Hidup Kita</p>
+        </header>
+
+        <div class="card-container">
+            <div class="card">
+                <span class="card-icon">💝</span>
+                <h3>Cinta Tanpa Batas</h3>
+                <p>Cinta seorang ibu tidak terbatas oleh apapun. Kasih sayangnya mengalir seperti sungai yang tak pernah kering, memberikan kehangatan dan kenyamanan sepanjang hidup kita.</p>
             </div>
-            <div class="message">From your son, Daffa</div>
+
+            <div class="card">
+                <span class="card-icon">🌟</span>
+                <h3>Pahlawan Sejati</h3>
+                <p>Ibu adalah pahlawan tanpa tanda jasa yang selalu ada di setiap langkah perjalanan hidup kita. Pengorbanannya tak ternilai harganya.</p>
+            </div>
+
+            <div class="card">
+                <span class="card-icon">🤗</span>
+                <h3>Pelindung Terbaik</h3>
+                <p>Dalam pelukan ibu, kita menemukan tempat teraman di dunia. Kehangatan dan kelembutan kasih sayangnya menjadi kekuatan bagi kita.</p>
+            </div>
         </div>
+
+        <div class="message-section">
+            <h2>Pesan Spesial untuk Ibu</h2>
+            <div class="quote">
+                Ibu, terima kasih untuk setiap doa yang dipanjatkan, setiap pelukan yang menenangkan, dan setiap pengorbanan yang tak pernah diminta kembali. Engkau adalah cahaya dalam hidup kami, pembimbing di saat tersesat, dan pelabuhan teraman saat badai menerpa.
+            </div>
+            <p style="color: #555; font-size: 1.2em; margin-top: 50px; line-height: 1.8;">
+                Tidak ada kata yang cukup untuk mengungkapkan betapa besar rasa terima kasih dan cinta putramu. Semoga Allah selalu melindungi, memberkahi, dan memberikan kesehatan untuk Ibu tercinta.
+            </p>
+            <button class="btn" onclick="showMessage()">💌</button>
+        </div>
+
+        <footer>
+            <p>Dengan cinta dan kasih sayang yang tulus ❤️</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">Selamat Hari Ibu - 22 Desember 2025</p>
+            <p style="margin-top: 5%; font-size: 0.9em;">©Daffa/MDRR</p>
+        </footer>
     </div>
 
     <script>
-        // Create confetti
-        function createConfetti() {
-            const confettiContainer = document.getElementById('confetti');
-            for (let i = 0; i < 50; i++) {
-                const confettiPiece = document.createElement('div');
-                confettiPiece.className = 'confetti-piece';
-                confettiPiece.style.left = Math.random() * 100 + '%';
-                confettiPiece.style.animationDelay = Math.random() * 3 + 's';
-                confettiPiece.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                confettiContainer.appendChild(confettiPiece);
-            }
+        function showMessage() {
+            alert('💐 Terima kasih Ibu untuk segalanya! Putramu mencintaimu selamanya! 💝');
         }
 
-        // Create sparkles
-        function createSparkles() {
-            const sparklesContainer = document.getElementById('sparkles');
-            const sparkleSymbols = ['✨', '⭐', '💫', '🌟'];
+        // Create floating petals effect
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.style.position = 'fixed';
+            petal.style.fontSize = '20px';
+            petal.style.left = Math.random() * 100 + '%';
+            petal.style.top = '-50px';
+            petal.style.opacity = '0.7';
+            petal.style.pointerEvents = 'none';
+            petal.style.zIndex = '1000';
+            petal.textContent = ['🌸', '🌺', '🌷', '🌹', '💐'][Math.floor(Math.random() * 5)];
             
-            for (let i = 0; i < 15; i++) {
-                const sparkle = document.createElement('div');
-                sparkle.className = 'sparkle';
-                sparkle.textContent = sparkleSymbols[Math.floor(Math.random() * sparkleSymbols.length)];
-                sparkle.style.left = Math.random() * 100 + '%';
-                sparkle.style.top = Math.random() * 100 + '%';
-                sparkle.style.animationDelay = Math.random() * 2 + 's';
-                sparklesContainer.appendChild(sparkle);
-            }
+            document.body.appendChild(petal);
+            
+            let pos = -50;
+            let drift = Math.random() * 200 - 100;
+            const interval = setInterval(() => {
+                pos += 2;
+                drift += (Math.random() - 0.5) * 3;
+                petal.style.top = pos + 'px';
+                petal.style.transform = `translateX(${drift}px) rotate(${pos}deg)`;
+                
+                if (pos > window.innerHeight) {
+                    clearInterval(interval);
+                    petal.remove();
+                }
+            }, 30);
         }
 
-        // Initialize animations
-        createConfetti();
-        createSparkles();
-
-        // Add click effect for extra celebration
-        document.addEventListener('click', function(e) {
-            const colors = ['#ff6b9d', '#ffa726', '#42a5f5', '#ab47bc', '#4caf50'];
-            for (let i = 0; i < 10; i++) {
-                const particle = document.createElement('div');
-                particle.style.position = 'fixed';
-                particle.style.left = e.clientX + 'px';
-                particle.style.top = e.clientY + 'px';
-                particle.style.width = '6px';
-                particle.style.height = '6px';
-                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-                particle.style.borderRadius = '50%';
-                particle.style.pointerEvents = 'none';
-                particle.style.zIndex = '1000';
-                
-                const angle = (Math.PI * 2 * i) / 10;
-                const velocity = 100;
-                const vx = Math.cos(angle) * velocity;
-                const vy = Math.sin(angle) * velocity;
-                
-                particle.style.animation = `explode 1s ease-out forwards`;
-                particle.style.setProperty('--vx', vx + 'px');
-                particle.style.setProperty('--vy', vy + 'px');
-                
-                document.body.appendChild(particle);
-                
-                setTimeout(() => {
+        // Create petals periodically
+        setInterval(createPetal, 2000);
+    </script>
+</body>
+</html>    setTimeout(() => {
                     particle.remove();
                 }, 1000);
             }
