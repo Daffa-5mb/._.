@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selamat Hari Ibu</title>
     <style>
         * {
@@ -252,7 +252,7 @@
         <div class="message-section">
             <h2>Pesan Spesial untuk Ibu</h2>
             <div class="quote">
-                Ibu, terima kasih untuk setiap doa yang dipanjatkan, setiap pelukan yang menenangkan, dan setiap pengorbanan yang tak pernah diminta kembali. Engkau adalah cahaya dalam hidup kami.
+                Ibu, terima kasih untuk setiap doa yang dipanjatkan, setiap pelukan yang menenangkan, dan setiap pengorbanan yang tak pernah diminta kembali. Engkau adalah cahaya dalam hidup kami, pem[...]
             </div>
             <p style="color: #555; font-size: 1.2em; margin-top: 50px; line-height: 1.8;">
                 Tidak ada kata yang cukup untuk mengungkapkan betapa besar rasa terima kasih dan cinta putramu. Semoga Allah selalu melindungi, memberkahi, dan memberikan kesehatan untuk Ibu tercinta.
@@ -276,44 +276,36 @@
         function createPetal() {
             const petal = document.createElement('div');
             petal.style.position = 'fixed';
-            petal.style.fontSize = Math.floor(Math.random() * 12 + 16) + 'px';
+            petal.style.fontSize = '20px';
             petal.style.left = Math.random() * 100 + '%';
             petal.style.top = '-50px';
-            petal.style.opacity = (Math.random() * 0.4 + 0.6).toString();
+            petal.style.opacity = '0.7';
             petal.style.pointerEvents = 'none';
             petal.style.zIndex = '1000';
-            petal.style.willChange = 'transform, top';
             petal.textContent = ['🌸', '🌺', '🌷', '🌹', '💐'][Math.floor(Math.random() * 5)];
-
+            
             document.body.appendChild(petal);
-
+            
             let pos = -50;
-            // drift in px, updated every tick
-            let drift = (Math.random() * 200 - 100);
-            const speed = Math.random() * 1.5 + 1; // vertical speed multiplier
-            const rotate = Math.random() * 360;
-            let rot = rotate;
-
+            let drift = Math.random() * 200 - 100;
             const interval = setInterval(() => {
-                pos += speed * 2;
-                drift += (Math.random() - 0.5) * 6;
-                rot += (Math.random() - 0.5) * 10;
+                pos += 2;
+                drift += (Math.random() - 0.5) * 3;
                 petal.style.top = pos + 'px';
-                petal.style.transform = `translateX(${drift}px) rotate(${rot}deg)`;
-
-                if (pos > window.innerHeight + 50) {
+                petal.style.transform = `translateX(${drift}px) rotate(${pos}deg)`;
+                
+                if (pos > window.innerHeight) {
                     clearInterval(interval);
-                    if (petal.parentNode) petal.parentNode.removeChild(petal);
+                    petal.remove();
                 }
             }, 30);
         }
 
         // Create petals periodically
-        const petalInterval = setInterval(createPetal, 900);
-
-        // Optional: stop creating petals when page is hidden to save resources
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden) {
+        setInterval(createPetal, 2000);
+    </script>
+</body>
+</html>      if (document.hidden) {
                 clearInterval(petalInterval);
             } else {
                 // restart if needed
